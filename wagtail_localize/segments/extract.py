@@ -49,7 +49,10 @@ class StreamFieldSegmentExtractor:
 
             if isinstance(block_type, EmbedBlock):
                 if self.include_overridables:
-                    return [OverridableSegmentValue("", block_value.url)]
+                    if block_value:
+                        return [OverridableSegmentValue("", block_value.url)]
+                    else:
+                        return []
                 else:
                     return []
 
